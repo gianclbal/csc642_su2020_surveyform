@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+  <title>HCI Project</title>
+  <!-- Required Stylesheets -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  
+  <!-- Required scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script type="text/javascript" defer src="/static/js/index.js"></script>
+</head>
+
+<body>
+  <div id="error"></div>
+  <div class="container">
+    <div class="py-5 text-center">
+      <h2>Take Our Survey!</h2>
+      <p class="lead">We want to get to know our customers. Please take our short survey.</p>
+    </div>
+
+  <div class="card">
+    <div class="card-body">
+  <form action="/review" method="GET" id="form" class="needs-validation" novalidate>
+
+    <!-- First name reqiured -->
+    <div class="form-group row">
+        <label for="validationCustom01" class="col-sm-2 col-form-label">First name*</label>
+        <div class="col-sm-10">
+        <input type="text" class="form-control" id="fname" required maxlength="40">
+      </div>
+      
+    </div>
+    <!-- Last name required -->
+    <div class="form-group row">
+        <label for="validationCustom02" class="col-sm-2 col-form-label">Last name*</label>
+        <div class="col-sm-10">
+        <input type="text" class="form-control" id="lname"required required maxlength="40">
+        </div>
+    </div>
+    <!-- Birth date required -->
+    <div class="form-group row">
+      <label for="validationCustomBirthdate" class="col-sm-2 col-form-label">Birthdate*</label>
+      <div class="col-sm-10">
+      <input  class="form-control" type="date"  id="birthdate" required>
+      </div>
+        <div class="invalid-feedback">
+        Please input your date of birth.
+      </div>
+    </div>
+    <!-- Height -->
+    <div class="form-group form-row">
+      <label for="validationCustomHeight" class="col-sm-2 col-form-label">Height</label>
+      <div class="col">
+        <input type="text" class="form-control" id="ft" placeholder="ft" min="0" max="20" >
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" id="in" placeholder="in"  min="0" min="99">
+      </div>
+    </div>
+    <!-- Education level -->
+    <div class="form-group form-row">
+      <label for="validationCustomEducation" class="col-sm-2 col-form-label">Education</label>
+      <div class="col-sm-10">
+      <select class="custom-select" id="edu">
+      <option selected value="Did not answer">Please select level of education</option>
+      <option value="High School">High school</option>
+      <option value="College">College</option>
+      <option value="Graduate studies">Graduate studies</option>
+      <option value="Doctorate">Doctorate</option>
+
+    </select>
+    </div>
+    </div>
+
+    <!-- Address -->
+    
+    <div class="form-group row">
+      <label for="validationCustomAddress" class="col-sm-2 col-form-label">Address*</label>
+      <div class="col-sm-10">
+      <input type="text" class="form-control" id="address" maxlenth="40" placeholder="1234 Main Street"required>
+      </div>
+      <div class="invalid-feedback">
+        Please provide a street address.
+      </div>
+  </div>
+      <!-- City -->
+    <div class="form-group form-row">
+      
+        <label for="validationCustom03" class="col-sm-2 col-form-label">City*</label>
+        <div class="col">
+        <input type="text" class="form-control" id="city" maxlenth="40" placeholder="City" required>
+        </div>
+        <div class="invalid-feedback">
+          Please provide a valid city.
+        </div>
+      
+      
+        <label for="validationCustom04" class="col-sm-1 col-form-label">State*</label>
+        <div class="col">
+          <select class="custom-select" aria-placeholder="State" id="state">
+            <option value="AL">AL</option>
+            <option value="AK">AK</option>
+            <option value="AR">AR</option>	
+            <option value="AZ">AZ</option>
+            <option value="CA">CA</option>
+            <option value="CO">CO</option>
+            <option value="CT">CT</option>
+            <option value="DC">DC</option>
+            <option value="DE">DE</option>
+            <option value="FL">FL</option>
+            <option value="GA">GA</option>
+            <option value="HI">HI</option>
+            <option value="IA">IA</option>	
+            <option value="ID">ID</option>
+            <option value="IL">IL</option>
+            <option value="IN">IN</option>
+            <option value="KS">KS</option>
+            <option value="KY">KY</option>
+            <option value="LA">LA</option>
+            <option value="MA">MA</option>
+            <option value="MD">MD</option>
+            <option value="ME">ME</option>
+            <option value="MI">MI</option>
+            <option value="MN">MN</option>
+            <option value="MO">MO</option>	
+            <option value="MS">MS</option>
+            <option value="MT">MT</option>
+            <option value="NC">NC</option>	
+            <option value="NE">NE</option>
+            <option value="NH">NH</option>
+            <option value="NJ">NJ</option>
+            <option value="NM">NM</option>			
+            <option value="NV">NV</option>
+            <option value="NY">NY</option>
+            <option value="ND">ND</option>
+            <option value="OH">OH</option>
+            <option value="OK">OK</option>
+            <option value="OR">OR</option>
+            <option value="PA">PA</option>
+            <option value="RI">RI</option>
+            <option value="SC">SC</option>
+            <option value="SD">SD</option>
+            <option value="TN">TN</option>
+            <option value="TX">TX</option>
+            <option value="UT">UT</option>
+            <option value="VT">VT</option>
+            <option value="VA">VA</option>
+            <option value="WA">WA</option>
+            <option value="WI">WI</option>	
+            <option value="WV">WV</option>
+            <option value="WY">WY</option>
+          </select>	
+        </div>
+        <div class="invalid-feedback">
+          Please provide a valid state.
+      </div>
+      
+        <label for="validationCustom05" class="col-sm-0.5 col-form-label">ZIP Code*</label>
+        <div class="col">
+        <input type="text" class="form-control" id="zip" maxlenth="40" placeholder="ZIP" minlength="5" maxlength="5" required>
+        </div>
+        <div class="invalid-feedback">
+          Please provide a valid zip.
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="validationPhone" class="col-sm-2 col-form-label">Phone number*</label>
+        <div class="col-sm-10">
+        <input type="tel" class="form-control" id="phone"required required min="0" maxlength="7" pattern="[0-9]{3}[0-9]{4}">
+        </div>
+        <div class="invalid-feedback">
+          Please provide a valid phone number.
+        </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="validationEmail" class="col-sm-2 col-form-label">Email Address*</label>
+      <div class="col-sm-10">
+      <input type="email" class="form-control" id="email" required>
+      </div>
+      <div class="invalid-feedback">
+        Please provide a valid email address.
+      </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="validationEmail" class="col-sm-2 col-form-label">Re-type email address*</label>
+    <div class="col-sm-10">
+    <input type="email" class="form-control" id="email2" placeholder="Please-type email address"required>
+    </div>
+    <div class="invalid-feedback">
+      Please provide a valid email address.
+    </div>
+</div>
+
+
+
+      <div class="form-group form-check">
+        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+        <label class="form-check-label" for="invalidCheck">
+         Agree to terms and conditions
+         </label>
+         <div class="invalid-feedback">
+          You must agree before submitting.
+          </div>
+
+      </div>
+      <div class="form-group">
+      <div class="g-recaptcha" data-sitekey="6Ld077EZAAAAAOgzSnA6riJ_AvFum3MFVLlhDt1R" ></div>
+    </div>
+
+     <button class="btn btn-primary float-right" type="submit" onClick="handleSubmit()">Review survey</button>
+
+  </form>
+</div>
+</div>
+</div>
+  
+  <script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
+
+        
+  </script>
+
+  
+</body>
+</html>

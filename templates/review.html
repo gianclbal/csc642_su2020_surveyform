@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+  <title>HCI Project</title>
+  <!-- Required Stylesheets -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  
+  <!-- Required scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <!---<script defer src="review.js"></script> -->
+</head>
+
+<body>
+  <div id="error"></div>
+  <div class="container">
+    <div class="py-5 text-center">
+      <h4>Response Summary</h4>
+    </div>
+
+  <div class="card">
+    <div class="card-body">
+      <form action="/thankyou">
+      <p>
+        First name: <span id="result-fname"></span>
+        <script>
+          document.getElementById('result-fname').innerHTML = localStorage.getItem("fname");
+        </script> 
+        </p>
+      <p>
+        Last name: <span id="result-lname"></span>
+        <script>
+          document.getElementById('result-lname').innerHTML = localStorage.getItem('lname');
+        </script>
+      </p>
+      <p>
+        Birthdate: <span id="result-birthdate"></span>
+        <script>
+          document.getElementById('result-birthdate').innerHTML = localStorage.getItem('birthdate');
+        </script>
+      </p>
+      <p>
+        Height: <span id="result-ft"></span> feet and <span id="result-in"></span> inches
+        <script>
+          document.getElementById('result-ft').innerHTML = localStorage.getItem('ft'); 
+          document.getElementById('result-in').innerHTML = localStorage.getItem('in');
+        </script>
+      </p>
+      <p>
+        Education: <span id="result-edu"></span>
+        <script>
+          document.getElementById('result-edu').innerHTML = localStorage.getItem('edu');
+        </script>
+      </p>
+      <p>
+        Address: 
+        <address> 
+          <span id="result-address"> </span><span id="result-city"> </span><span id="result-state"> </span><span id="result-zip"></span>
+        </address>
+        <script>
+          document.getElementById('result-address').innerHTML = localStorage.getItem('address');
+          document.getElementById('result-city').innerHTML = localStorage.getItem('city');
+          document.getElementById('result-state').innerHTML = localStorage.getItem('state');
+          document.getElementById('result-zip').innerHTML = localStorage.getItem('zip');
+          $(document).ready(function(){
+          $("address").each(function(){                         
+            var embed ="<iframe width='425' height='350' frameborder='0' scrolling='no'  marginheight='0' marginwidth='0'   src='https://maps.google.com/maps?&amp;q="+ encodeURIComponent( $(this).text() ) +"&amp;output=embed'></iframe>";
+                                $(this).html(embed);
+                             
+        });
+      });
+          
+        </script>
+      </p>
+      <p>
+        Phone number: <span id="result-phone"></span>
+        <script>
+          document.getElementById('result-phone').innerHTML = localStorage.getItem('phone');
+        </script>
+      </p>
+      <p>
+        Email address: <span id="result-email"></span>
+        <script>
+          document.getElementById('result-email').innerHTML = localStorage.getItem('email');
+        </script>
+      </p>
+      
+      
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Submit response</button>
+    </form>
+
+    </div>
+  </div>
+  </div>
+
+</body>
+</html>
