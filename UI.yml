@@ -1,0 +1,16 @@
+name: UI
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - flask
+  - gunicorn
+  - python=3.7
+  - selenium
+  - nodejs=14.5.0
+  - pip:
+        - webdriver-manager
+        - python-language-server[all] 
+prefix: ~/miniconda3/envs/UI
+
+
