@@ -1,0 +1,13 @@
+label > span {
+    color: red;
+}
+
+p > span {
+    color: red;
+    font-style: italic;
+}
+
+.fields {
+    font-size: 80%;
+    font-style: italic;
+}

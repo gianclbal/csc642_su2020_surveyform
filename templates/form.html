@@ -9,12 +9,36 @@
   <title>HCI Project</title>
   <!-- Required Stylesheets -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  
+  <link rel="stylesheet" href ="/static/css/styles.css">
   <!-- Required scripts -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script>
+    window.onload = function() {
+      var recaptcha = document.forms["myForm"]["g-recaptcha-response"];
+      recaptcha.required = true;
+      recaptcha.oninvalid = function(e) {
+        // do something
+        alert("Please complete the captcha");
+      }
+    }
+    </script>
+  <script type="text/javascript">
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    confirmEmail();
+  })
+
+    function confirmEmail() {
+        var email = document.getElementById("email").value
+        var email2 = document.getElementById("email2").value
+        if(email != email2) {
+            event.preventDefault();
+        }
+    }
+</script>
   <script type="text/javascript" defer src="/static/js/index.js"></script>
 </head>
 
@@ -26,40 +50,50 @@
       <p class="lead">We want to get to know our customers. Please take our short survey.</p>
     </div>
 
-  <div class="card">
+  <div class="card card bg-light mb-3">
     <div class="card-body">
   <form action="/review" method="GET" id="form" class="needs-validation" novalidate>
-
+    <p class="fields">All fields marked with an asterisk ( <span>*</span> ) are required.</p>
     <!-- First name reqiured -->
     <div class="form-group row">
-        <label for="validationCustom01" class="col-sm-2 col-form-label">First name*</label>
+        <label for="validationCustom01" class="col-sm-2 col-form-label">First name<span>*</span></label>
         <div class="col-sm-10">
         <input type="text" class="form-control" id="fname" required maxlength="40">
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          Please provide your first name.
+        </div>
       </div>
       
     </div>
     <!-- Last name required -->
     <div class="form-group row">
-        <label for="validationCustom02" class="col-sm-2 col-form-label">Last name*</label>
+        <label for="validationCustom02" class="col-sm-2 col-form-label">Last name<span>*</span></label>
         <div class="col-sm-10">
         <input type="text" class="form-control" id="lname"required required maxlength="40">
+        
+        <div class="invalid-feedback">
+          Please provide your last name.
+        </div>
         </div>
     </div>
     <!-- Birth date required -->
     <div class="form-group row">
-      <label for="validationCustomBirthdate" class="col-sm-2 col-form-label">Birthdate*</label>
+      <label for="validationCustomBirthdate" class="col-sm-2 col-form-label">Birthdate<span>*</span></label>
       <div class="col-sm-10">
       <input  class="form-control" type="date"  id="birthdate" required>
-      </div>
-        <div class="invalid-feedback">
+      <div class="invalid-feedback">
         Please input your date of birth.
       </div>
     </div>
+    </div>
     <!-- Height -->
     <div class="form-group form-row">
-      <label for="validationCustomHeight" class="col-sm-2 col-form-label">Height</label>
+      <label  class="col-sm-2 col-form-label">Height</label>
       <div class="col">
-        <input type="text" class="form-control" id="ft" placeholder="ft" min="0" max="20" >
+        <input type="text" class="form-control" id="ft" placeholder="ft" min="0" max="20" > 
       </div>
       <div class="col">
         <input type="text" class="form-control" id="in" placeholder="in"  min="0" min="99">
@@ -83,27 +117,29 @@
     <!-- Address -->
     
     <div class="form-group row">
-      <label for="validationCustomAddress" class="col-sm-2 col-form-label">Address*</label>
+      <label for="validationCustomAddress" class="col-sm-2 col-form-label">Address<span>*</span></label>
       <div class="col-sm-10">
       <input type="text" class="form-control" id="address" maxlenth="40" placeholder="1234 Main Street"required>
-      </div>
       <div class="invalid-feedback">
         Please provide a street address.
       </div>
+    </div>
+      
   </div>
       <!-- City -->
     <div class="form-group form-row">
       
-        <label for="validationCustom03" class="col-sm-2 col-form-label">City*</label>
+        <label for="validationCustom03" class="col-sm-2 col-form-label">City<span>*</span></label>
         <div class="col">
         <input type="text" class="form-control" id="city" maxlenth="40" placeholder="City" required>
-        </div>
         <div class="invalid-feedback">
           Please provide a valid city.
         </div>
+      </div>
+        
       
       
-        <label for="validationCustom04" class="col-sm-1 col-form-label">State*</label>
+        <label for="validationCustom04" class="col-sm-1 col-form-label">State<span>*</span></label>
         <div class="col">
           <select class="custom-select" aria-placeholder="State" id="state">
             <option value="AL">AL</option>
@@ -158,22 +194,23 @@
             <option value="WV">WV</option>
             <option value="WY">WY</option>
           </select>	
+          <div class="invalid-feedback">
+            Please provide a valid state.
         </div>
-        <div class="invalid-feedback">
-          Please provide a valid state.
-      </div>
+        </div>
+       
       
-        <label for="validationCustom05" class="col-sm-0.5 col-form-label">ZIP Code*</label>
+        <label for="validationCustom05" class="col-sm-0.5 col-form-label">ZIP Code<span>*</span></label>
         <div class="col">
         <input type="text" class="form-control" id="zip" maxlenth="40" placeholder="ZIP" minlength="5" maxlength="5" required>
-        </div>
         <div class="invalid-feedback">
           Please provide a valid zip.
         </div>
       </div>
+      </div>
 
       <div class="form-group row">
-        <label for="validationPhone" class="col-sm-2 col-form-label">Phone number*</label>
+        <label for="validationPhone" class="col-sm-2 col-form-label">Phone number<span>*</span></label>
         <div class="col-sm-10">
         <input type="tel" class="form-control" id="phone"required required min="0" maxlength="7" pattern="[0-9]{3}[0-9]{4}">
         </div>
@@ -183,23 +220,36 @@
     </div>
 
     <div class="form-group row">
-      <label for="validationEmail" class="col-sm-2 col-form-label">Email Address*</label>
+      <label for="validationEmail" class="col-sm-2 col-form-label">Email Address<span>*</span></label>
       <div class="col-sm-10">
       <input type="email" class="form-control" id="email" required>
-      </div>
       <div class="invalid-feedback">
         Please provide a valid email address.
       </div>
+      </div>
+      
   </div>
+  <script>
+    $('#email, #email2').on('keyup', function () {
+     if ($('#email').val() == $('#email2').val()) {
+       $('#message').html('Matching').css('color', 'green');
+     } else 
+       $('#message').html('Not Matching').css('color', 'red');
+   });
+ </script>
+
 
   <div class="form-group row">
-    <label for="validationEmail" class="col-sm-2 col-form-label">Re-type email address*</label>
+    <label for="validationEmail" class="col-sm-2 col-form-label">Re-type email address<span>*</span></label>
     <div class="col-sm-10">
-    <input type="email" class="form-control" id="email2" placeholder="Please-type email address"required>
+    <input type="email" class="form-control" id="email2" placeholder="Please re-type email address"required>
+    <div class="invalid-feedback" id='message'>
+      Please confirm email address.
     </div>
-    <div class="invalid-feedback">
-      Please provide a valid email address.
-    </div>
+   
+    
+  </div>
+  
 </div>
 
 
@@ -215,10 +265,11 @@
 
       </div>
       <div class="form-group">
-      <div class="g-recaptcha" data-sitekey="6Ld077EZAAAAAOgzSnA6riJ_AvFum3MFVLlhDt1R" ></div>
+      <div class="g-recaptcha" data-sitekey="6Ld077EZAAAAAOgzSnA6riJ_AvFum3MFVLlhDt1R"></div>
     </div>
 
      <button class="btn btn-primary float-right" type="submit" onClick="handleSubmit()">Review survey</button>
+    
 
   </form>
 </div>
